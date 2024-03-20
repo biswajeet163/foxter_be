@@ -7,9 +7,13 @@ WORKDIR /app
 # Copy the Maven project descriptor
 COPY pom.xml .
 
-# Download dependencies and build the application
+# Download dependencies
 RUN mvn dependency:go-offline
+
+# Copy the source code
 COPY src ./src
+
+# Build the application
 RUN mvn package -DskipTests
 
 # Use OpenJDK 17 as base image for running
