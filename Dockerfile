@@ -9,7 +9,7 @@ RUN mvn clean package -DskipTests
 #
 # Package stage
 #
-FROM adoptopenjdk/openjdk17:jre-17.0.1_12-alpine
+FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar demo.jar
 EXPOSE 8080
